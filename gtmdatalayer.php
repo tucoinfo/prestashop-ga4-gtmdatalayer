@@ -8,7 +8,7 @@ class GtmDataLayer extends Module
 	{
 		$this->name = 'gtmdatalayer';
 		$this->tab = 'analytics_stats';
-		$this->version = '1.1';
+		$this->version = '1.2';
 		$this->author = 'petrovv77';
 		$this->need_instance = 0;
 		$this->ps_versions_compliancy = array('min' => '1.5', 'max' => _PS_VERSION_);
@@ -16,7 +16,7 @@ class GtmDataLayer extends Module
 
 		parent::__construct();
 
-		$this->displayName = $this->l('Data Layer Module');
+		$this->displayName = $this->l('GTM Data Layer Module');
 		$this->description = $this->l('Adds data layer data for use by Google Tag Manager.');
 
 		$this->confirmUninstall = $this->l('Are you sure you want to uninstall?');
@@ -29,7 +29,7 @@ class GtmDataLayer extends Module
 	public function install()
 	{
 		if (!parent::install() ||
-			!$this->registerHook('orderConfirmation'))
+			!$this->registerHook('paymentReturn'))
 			return false;
 		if (!Db::getInstance()->Execute('
 			CREATE TABLE IF NOT EXISTS `'._DB_PREFIX_.'data_layer` (
@@ -57,7 +57,7 @@ class GtmDataLayer extends Module
 	/**
 	* To track transactions
 	*/
-	public function hookOrderConfirmation($params)
+	public function hookPaymentReturn($params)
 	{
 		if (version_compare(_PS_VERSION_, '1.7', '<')) {
     			$order = $params['objOrder'];

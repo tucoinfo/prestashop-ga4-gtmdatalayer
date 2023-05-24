@@ -9,12 +9,18 @@ IMPORTANT: For this code to fire, your payment method modules need to be calling
 Install the PrestaShop module "Data Layer Module" (instructions for installing a PrestaShop module can be found in the PrestaShop Documentation). 
 It's a VERY basic module that any PHP coder can understand and expand on.
 
+In short, grab the Zip, rename the folder inside, upload via the BO.
+
 ## Inside GTM 
 
 Tag configuration for this example:
 
 - Tag type: GA4 Event
 - Event Name: purchase
+- More Settings -> Ecommerce -> Send Ecommerce Data: Data Layer
+- Trigger Custom Event name : purchase
+
+[Legacy manual method]
 - Data Layer Variables (Name - Data Layer Variable Name) :
 - - Ecommerce Items - ecommerce.items
 - - Ecommerce Transaction ID - ecommerce.transaction_id

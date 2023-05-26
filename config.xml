@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <module>
-	<name>datalayer</name>
-	<displayName><![CDATA[Data Layer Module]]></displayName>
-	<version><![CDATA[1.0.1]]></version>
+	<name>gtmdatalayer</name>
+	<displayName><![CDATA[GTM Data Layer Module]]></displayName>
+	<version><![CDATA[1.4]]></version>
 	<description><![CDATA[Adds data layer data for Google Tag Manager.]]></description>
 	<author><![CDATA[petrovv77]]></author>
 	<tab><![CDATA[analytics_stats]]></tab>

@@ -9,7 +9,7 @@ class GtmDataLayer extends Module
 		$this->name = 'gtmdatalayer';
 		$this->table_name = 'gtm_data_layer';
 		$this->tab = 'analytics_stats';
-		$this->version = '1.4';
+		$this->version = '1.5';
 		$this->author = 'petrovv77';
 		$this->need_instance = 0;
 		$this->ps_versions_compliancy = array('min' => '1.5', 'max' => _PS_VERSION_);

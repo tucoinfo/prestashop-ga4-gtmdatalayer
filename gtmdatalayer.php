@@ -76,10 +76,10 @@ class GtmDataLayer extends Module
 				foreach ($cart->getProducts() as $order_product) {
 					// https://developers.google.com/analytics/devguides/collection/ga4/ecommerce?client_type=gtm#make_a_purchase_or_issue_a_refund
 					$item_name = $order_product['name'];
-					$item_id = (int)$order_product['id_product'];
+					$item_id = $order_product['id_product'];
 					$price = number_format($order_product['price_wt'], 2, '.', '');
-					$quantity = (int)$order_product['cart_quantity'];
-					$order_products[] = ['item_name' => $item_name, 'item_id' => $item_id, 'price' => $price, 'quantity' => $quantity];
+					$quantity = $order_product['cart_quantity'];
+					$order_products[] = ['item_name' => (string)$item_name, 'item_id' => (string)$item_id, 'price' => (float)$price, 'quantity' => (int)$quantity];
 				}
 				
 				$products_json = json_encode($order_products);
@@ -87,12 +87,12 @@ class GtmDataLayer extends Module
 				Db::getInstance()->Execute('INSERT INTO `'._DB_PREFIX_.$this->table_name.'` (id_order, sent, date_add) VALUES ('.(int)$order->id.', 1, NOW())');
 
 				$dl = new stdClass();
-				$dl->transaction_id = $order->id;
-				$dl->value = number_format($order->total_paid, 2, '.', '');
-				$dl->tax = ($order->total_paid_tax_incl - $order->total_paid_tax_excl);
-				$dl->shipping = number_format($order->total_shipping, 2);
-				$dl->currency = $params['currencyObj']->iso_code;
-				$dl->items = (int)$products_json;
+				$dl->transaction_id = (string)$order->id;
+				$dl->value = (float)number_format($order->total_paid, 2, '.', '');
+				$dl->tax = (float)($order->total_paid_tax_incl - $order->total_paid_tax_excl);
+				$dl->shipping = (float)number_format($order->total_shipping, 2);
+				$dl->currency = (string)$params['currencyObj']->iso_code;
+				$dl->items = $products_json;
 				
 				Media::addJsDef(array('dl' => $dl));
           			$this->context->controller->addJS($this->_path.'views/js/gtmdatalayer.js');

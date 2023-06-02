@@ -2,7 +2,7 @@
 <module>
 	<name>gtmdatalayer</name>
 	<displayName><![CDATA[GTM Data Layer Module]]></displayName>
-	<version><![CDATA[1.4]]></version>
+	<version><![CDATA[1.5]]></version>
 	<description><![CDATA[Adds data layer data for Google Tag Manager.]]></description>
 	<author><![CDATA[petrovv77]]></author>
 	<tab><![CDATA[analytics_stats]]></tab>
